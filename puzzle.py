@@ -42,11 +42,11 @@ class Player:
             self.display_guesses_left()
             if self._guesses_left == 0:
                 print("\nYou lost!")
-                print("The word was: ", self.display_word())
+                print(self.display_word())
                 break
             if self._guess == self._puzzle._word:
                 print("\nYou won!")
-                print("The word was: ", self.display_word())
+                print(self.display_word())
                 break
 
 obj1 = Puzzle()
