@@ -1,22 +1,19 @@
 import random
-from puzzle_2 import main_2
 
-
-class Word:
+class Words:
     def __init__(self):
-        fileObject = open("list_words.txt", "r")
-        data = fileObject.read()
-        self._word = random.choice(data.split())
-class Puzzle(Word):
+        self.data = ["be", "have", "do", "say","get","make", "go", "know", "take","see"]
+        self._word = random.choice(self.data)
+    def get_word(self):
+        return self._word
+class Puzzle(Words):
     def __init__(self):
 
         # Calling constructor of the word class
-        Word.__init__(self)
-
-class Player:
-
+     Words.__init__(self)
+class Parachuter:
     def __init__(self):
-        self._puzzle = Puzzle()
+        self._puzzle = Words()
         self._guess = ""
         self._guesses = []
         self._guesses_left = 15
@@ -26,9 +23,9 @@ class Player:
         self._guesses.append(self._guess)
     def check_guess(self):
         if self._guess in self._puzzle._word:
-            print("Correct!")
+            print("\nCorrect!")
         else:
-            print("Incorrect!")
+            print("\nIncorrect!")
             self._guesses_left -= 1
     def display_word(self):
         print("The word is: ", self._puzzle._word)
@@ -50,30 +47,6 @@ class Player:
                 print("\nYou won!")
                 print(self.display_word())
                 break
-
-def main():
-    obj1 = Puzzle()
-    player = Player()
-    player.play_game()
-
-print("Welcome to the word game!")
-print("\nThere are multiple rooms, which one do you want to go to?(1/2) ")
-print("Just remember, room 1 has thousands of words, room 2 has only ten words.")
-choice = input("\nEnter 1 or 2: ")
-
-if choice == "1":
-    print("You are in room 1")
-    print("You have over four hundred thousand words to guess.")
-    print("You have 15 guesses.")
-    print("You can only guess one letter at a time.")
-    print("Good luck!")
-    main()
-
-elif choice == "2":
-    print("You are in room 2")
-    print("You have ten words to guess.")
-    print("You have 15 guesses.")
-    print("You can only guess one letter at a time.")
-    print("Good luck!")
-    main_2()
-
+def main_2 ():
+    obj1 = Parachuter()
+    obj1.play_game()
