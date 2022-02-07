@@ -1,7 +1,7 @@
 import random
 from puzzle_2 import main_2
-
-
+#TODO: Add a check to see if the player got the word right
+#TODO: Replace some of the wording in the code so it says what our instructor is asking us
 class Word:
     def __init__(self):
         fileObject = open("list_words.txt", "r")
@@ -22,6 +22,8 @@ class Player:
         self._guesses_left = 15
         self._guesses_allowed = 15
     def guess_word(self):
+        print("The number of letters are: ", len(self._puzzle._word))
+        print("The first letter is: ", self._puzzle._word[0], "\nAnd the last one is: ",self._puzzle._word[-1])
         self._guess = input("\nEnter a letter: ")
         self._guesses.append(self._guess)
     def check_guess(self):
@@ -49,6 +51,11 @@ class Player:
             if self._guess == self._puzzle._word:
                 print("\nYou won!")
                 print(self.display_word())
+#TODO: Add a check to see if the player got the word right
+                if self._guesses in self._puzzle._word:
+                    print("You got it!")
+                    print(self.display_word())
+                    break
                 break
 
 def main():
